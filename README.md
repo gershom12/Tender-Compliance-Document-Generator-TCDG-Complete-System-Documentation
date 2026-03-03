@@ -32,20 +32,19 @@ Document versioning and audit trails
 Secure, POPIA-compliant storage
 
 2️⃣ System Goals
+Primary Goals
 
-Primary Goals:
+Automate compliance documentation generation
 
-Automate compliance documentation generation.
+Support multi-tenant SaaS with strict data isolation
 
-Support multi-tenant SaaS with strict data isolation.
+Ensure high availability, reliability, and scalability
 
-Ensure high availability, reliability, and scalability.
+Support async AI processing for complex tenders
 
-Support async AI processing for complex tenders.
+Secure sensitive data in compliance with South African regulations
 
-Secure sensitive data in compliance with South African regulations.
-
-Non-Goals (Phase 1):
+Non-Goals (Phase 1)
 
 Direct tender portal submission
 
@@ -97,7 +96,7 @@ tcdg-backend/
 │   ├─ templates/             # Thymeleaf / Freemarker
 │   └─ db/migration/          # Flyway / Liquibase
 └─ pom.xml / build.gradle
-5️⃣ ERD – Entity Relationship Diagram
+5️⃣ Entity Relationship Diagram (ERD)
 Tenant 1---* User
 Tenant 1---* Company 1---* Director
                       1---* Staff
@@ -109,13 +108,13 @@ Tenant 1---* AIJob
 
 Entity Notes:
 
-Tenant → multi-tenant isolation
+Tenant → Multi-tenant isolation
 
-DocumentVersion → full versioning & audit trails
+DocumentVersion → Full versioning & audit trails
 
-AIJob → async tracking of AI tender extraction & method statements
+AIJob → Async tracking of AI tender extraction & method statements
 
-ComplianceResult → scoring and missing item detection
+ComplianceResult → Scoring and missing item detection
 
 6️⃣ REST API Documentation
 
@@ -203,17 +202,17 @@ S3 / MinIO Storage
 Kafka Message Broker
 8️⃣ Scalability & Reliability
 
-Stateless services → horizontal scaling via Kubernetes
+Stateless services → Horizontal scaling via Kubernetes
 
-Kafka → async event-driven processing for documents & AI jobs
+Kafka → Async event-driven processing for documents & AI jobs
 
-Redis → caching, distributed locks, rate-limiting
+Redis → Caching, distributed locks, rate-limiting
 
-PostgreSQL + read replicas → read scalability
+PostgreSQL + read replicas → Read scalability
 
-S3 → versioned document storage
+S3 → Versioned document storage
 
-Retry & circuit breaker patterns for fault tolerance
+Retry & circuit breaker patterns → Fault tolerance
 
 9️⃣ Security & Compliance
 
