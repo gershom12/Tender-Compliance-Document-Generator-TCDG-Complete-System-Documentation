@@ -117,3 +117,55 @@ Notes:
 - AIJob: Tracks async processing of tender extraction
 
 - ComplianceResult: Scoring and missing items
+
+
+6️⃣ Microservice APIs
+
+
+<details> <summary>Auth Service</summary>
+Endpoint	Method	Request	Response	Description
+/auth/register	POST	{ "username","email","password","tenant_name" }	{ "user_id","token" }	Register user & tenant
+/auth/login	POST	{ "username","password" }	{ "token","refresh_token" }	Login & issue JWT
+/auth/refresh	POST	{ "refresh_token" }	{ "token","refresh_token" }	Refresh JWT
+/auth/logout	POST	{}	{ "message" }	Invalidate JWT
+</details> <details> <summary>Company Service</summary>
+Endpoint	Method	Request	Response	Description
+/companies	POST	{ "name","registration_number","bee_level" }	{ "company_id" }	Create company
+/companies	GET	?page=&size=	[company]	List companies
+/companies/{id}	GET	N/A	company	Get details
+/companies/{id}	PUT	{ "name","bee_level" }	company	Update company
+/companies/{id}	DELETE	N/A	{ "message" }	Delete company
+/companies/{id}/directors	POST	{ "full_name","id_number","ownership_pct" }	{ "director_id" }	Add director
+/companies/{id}/staff	POST	{ "full_name","role","qualification" }	{ "staff_id" }	Add staff
+/companies/{id}/equipment	POST	{ "name","type","certification" }	{ "equipment_id" }	Add equipment
+</details> <details> <summary>Document Service</summary>
+Endpoint	Method	Request	Response	Description
+/documents/generate	POST	{ "company_id","type" }	{ "document_id","status" }	Generate document (PDF/DOCX)
+/documents/{id}	GET	N/A	File	Download document
+/documents/{id}/status	GET	N/A	{ "status" }	Check generation status
+/documents/{id}/versions	GET	N/A	[version]	List versions
+/documents/{id}/versions/{vid}	GET	N/A	File	Download specific version
+</details> <details> <summary>AI Service</summary>
+Endpoint	Method	Request	Response	Description
+/ai/extract	POST	{ "tender_id","company_id" }	{ "job_id","status" }	Extract requirements, generate method statements
+/ai/job/{job_id}	GET	N/A	{ "status","result_path" }	Check AI job status
+/ai/job/{job_id}/download	GET	N/A	File	Download AI-generated document
+</details> <details> <summary>Compliance Service</summary>
+Endpoint	Method	Request	Response	Description
+/compliance/check	POST	{ "tender_id","company_id" }	{ "compliance_id","status" }	Run compliance check
+/compliance/{id}	GET	N/A	{ "status","score","missing_items" }	Get compliance results
+/compliance/{id}/download	GET	N/A	File	Download PDF report
+</details> <details> <summary>Billing Service</summary>
+Endpoint	Method	Request	Response	Description
+/billing/subscription	POST	{ "plan_type" }	{ "subscription_id" }	Create subscription
+/billing/subscription	GET	N/A	[subscription]	List subscriptions
+/billing/usage	GET	N/A	[{document_type, credits_used}]	Track usage
+</details> <details> <summary>Admin Service</summary>
+Endpoint	Method	Request	Response	Description
+/admin/tenants	GET	N/A	[tenant]	List all tenants
+/admin/users	GET	N/A	[user]	List all users
+/admin/logs	GET	?start=&end=	[audit_log]	View system audit logs
+</details>
+
+
+7️⃣ Architecture Diagram
