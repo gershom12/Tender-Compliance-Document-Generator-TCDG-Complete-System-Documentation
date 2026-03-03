@@ -174,38 +174,38 @@ Endpoint	Method	Request	Response	Description
 
 8️⃣ Scalability & Reliability
 
-Stateless services → Horizontal scaling via Kubernetes
+- Stateless services → Horizontal scaling via Kubernetes
 
-Kafka → Async event-driven processing for documents & AI jobs
+- Kafka → Async event-driven processing for documents & AI jobs
 
-Redis → Caching, distributed locks, rate-limiting
+- Redis → Caching, distributed locks, rate-limiting
 
-PostgreSQL + read replicas → Read scalability
+- PostgreSQL + read replicas → Read scalability
 
-S3 → Versioned document storage
+- S3 → Versioned document storage
 
-Retry & circuit breaker patterns → Fault tolerance
+- Retry & circuit breaker patterns → Fault tolerance
 
 9️⃣ Security & Compliance
 
-TLS 1.2+ for all traffic
+- TLS 1.2+ for all traffic
 
-AES-256 encryption at rest
+- AES-256 encryption at rest
 
-Field-level encryption for sensitive data
+- Field-level encryption for sensitive data
 
-RBAC + tenant-scoped JWT
+- RBAC + tenant-scoped JWT
 
-Audit logging for all sensitive operations
+- Audit logging for all sensitive operations
 
-POPIA compliance
+- POPIA compliance
 
 🔟 Future Enhancements
 
-Direct integration with eTenders Portal
+- Direct integration with eTenders Portal
 
-Mobile application (React Native)
+- Mobile application (React Native)
 
-Enterprise isolated DB per tenant
+- Enterprise isolated DB per tenant
 
-AI-powered compliance scoring & recommendations
+- AI-powered compliance scoring & recommendations
