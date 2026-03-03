@@ -104,97 +104,80 @@ tcdg-backend/
 │   └─ db/migration/    # Flyway / Liquibase
 └─ pom.xml / build.gradle
 5️⃣ Entity Relationship Diagram (ERD)
-<details> <summary>Click to expand ERD</summary>
-Tenant 1---* User
-Tenant 1---* Company 1---* Director
-                      1---* Staff
-                      1---* Equipment
-Company 1---* Document 1---* DocumentVersion
-DocumentType 1---* Document
-Tenant 1---* Tender 1---* ComplianceResult
-Tenant 1---* AIJob
+erDiagram
+    TENANT ||--o{ USER : has
+    TENANT ||--o{ COMPANY : owns
+    COMPANY ||--o{ DIRECTOR : has
+    COMPANY ||--o{ STAFF : employs
+    COMPANY ||--o{ EQUIPMENT : owns
+    COMPANY ||--o{ DOCUMENT : generates
+    DOCUMENT ||--o{ DOCUMENT_VERSION : has
+    DOCUMENT_TYPE ||--o{ DOCUMENT : defines
+    TENANT ||--o{ TENDER : posts
+    TENDER ||--o{ COMPLIANCE_RESULT : evaluates
+    TENANT ||--o{ AI_JOB : runs
 
-Entity Notes:
+Notes:
 
-Tenant → Multi-tenant isolation
+Tenant → Multi-tenant separation
 
-DocumentVersion → Full versioning & audit trails
+DocumentVersion → Versioning and audit trails
 
-AIJob → Async tracking of AI tender extraction & method statements
+AIJob → Tracks async processing of tender extraction
 
-ComplianceResult → Scoring and missing item detection
+ComplianceResult → Scoring and missing items
 
+
+
+3️⃣ Microservice APIs
+3.1 auth-service
+Endpoint	Method	Request	Response	Description
+/auth/register	POST	{ "username","email","password","tenant_name" }	{ "user_id","token" }	Register user & tenant
+/auth/login	POST	{ "username","password" }	{ "token","refresh_token" }	Login & issue JWT
+/auth/refresh	POST	{ "refresh_token" }	{ "token","refresh_token" }	Refresh JWT
+/auth/logout	POST	{}	{ "message" }	Invalidate JWT
+3.2 company-service
+Endpoint	Method	Request	Response	Description
+/companies	POST	{ "name","registration_number","bee_level" }	{ "company_id" }	Create company
+/companies	GET	?page=&size=	[company]	List companies
+/companies/{id}	GET	N/A	company	Get details
+/companies/{id}	PUT	{ "name","bee_level" }	company	Update company
+/companies/{id}	DELETE	N/A	{ "message" }	Delete company
+/companies/{id}/directors	POST	{ "full_name","id_number","ownership_pct" }	{ "director_id" }	Add director
+/companies/{id}/staff	POST	{ "full_name","role","qualification" }	{ "staff_id" }	Add staff
+/companies/{id}/equipment	POST	{ "name","type","certification" }	{ "equipment_id" }	Add equipment
+3.3 document-service
+Endpoint	Method	Request	Response	Description
+/documents/generate	POST	{ "company_id","type" }	{ "document_id","status" }	Generate document (PDF/DOCX)
+/documents/{id}	GET	N/A	File	Download document
+/documents/{id}/status	GET	N/A	{ "status" }	Check generation status
+/documents/{id}/versions	GET	N/A	[version]	List versions
+/documents/{id}/versions/{version_id}	GET	N/A	File	Download specific version
+3.4 ai-service
+Endpoint	Method	Request	Response	Description
+/ai/extract	POST	{ "tender_id","company_id" }	{ "job_id","status" }	Extract requirements, generate method statements
+/ai/job/{job_id}	GET	N/A	{ "status","result_path" }	Check AI job status
+/ai/job/{job_id}/download	GET	N/A	File	Download AI-generated document
+3.5 compliance-service
+Endpoint	Method	Request	Response	Description
+/compliance/check	POST	{ "tender_id","company_id" }	{ "compliance_id","status" }	Run compliance check
+/compliance/{id}	GET	N/A	{ "status","score","missing_items" }	Get compliance results
+/compliance/{id}/download	GET	N/A	File	Download PDF report
+3.6 billing-service
+Endpoint	Method	Request	Response	Description
+/billing/subscription	POST	{ "plan_type" }	{ "subscription_id" }	Create subscription
+/billing/subscription	GET	N/A	[subscription]	List subscriptions
+/billing/usage	GET	N/A	[ {document_type, credits_used} ]	Track usage
+3.7 admin-service
+Endpoint	Method	Request	Response	Description
+/admin/tenants	GET	N/A	[tenant]	List all tenants
+/admin/users	GET	N/A	[user]	List all users
+/admin/logs	GET	?start=&end=	[audit_log]	View system audit logs
 </details>
-6️⃣ REST API Documentation
 
-Base URL: https://api.tcdg.com/v1
-Authentication: JWT + tenant_id header
 
-<details> <summary>Auth APIs</summary>
-Endpoint	Method	Request	Response
-/auth/register	POST	{ username, email, password, tenant_name }	{ user_id, token }
-/auth/login	POST	{ username, password }	{ token, refresh_token }
-/auth/refresh	POST	{ refresh_token }	{ token, refresh_token }
-/auth/logout	POST	{}	{ message }
-</details> <details> <summary>Company APIs</summary>
 
-/companies → POST, GET, PUT, DELETE
 
-/companies/{companyId}/directors → CRUD directors
-
-/companies/{companyId}/staff → CRUD staff
-
-/companies/{companyId}/equipment → CRUD equipment
-
-</details> <details> <summary>Document APIs</summary>
-
-/documents/generate → POST (Generate PDF/DOCX)
-
-/documents/{id} → GET (Download document)
-
-/documents/{id}/status → GET
-
-/documents/{id}/versions → GET (List versions)
-
-/documents/{id}/versions/{version_id} → GET (Download version)
-
-</details> <details> <summary>Tender APIs</summary>
-
-/tenders → POST, GET
-
-/tenders/{id} → GET, DELETE
-
-</details> <details> <summary>AI APIs</summary>
-
-/ai/extract → POST (AI extraction & method statement)
-
-/ai/job/{job_id} → GET (Job status)
-
-/ai/job/{job_id}/download → GET (Download AI-generated document)
-
-</details> <details> <summary>Compliance APIs</summary>
-
-/compliance/check → POST (Run compliance check)
-
-/compliance/{id} → GET (Result & score)
-
-/compliance/{id}/download → GET (PDF report)
-
-</details> <details> <summary>Billing APIs</summary>
-
-/billing/subscription → POST, GET
-
-/billing/usage → GET
-
-</details> <details> <summary>Admin APIs</summary>
-
-/admin/tenants → GET
-
-/admin/users → GET
-
-/admin/logs → GET
-
-</details>
 7️⃣ Architecture Diagram
 Load Balancer
      ↓
