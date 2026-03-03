@@ -104,3 +104,16 @@ tcdg-backend/
 │   └─ db/migration/    # Flyway / Liquibase
 └─ pom.xml / build.gradle
 
+
+5️⃣ Entity Relationship Diagram (ERD)
+
+
+Notes:
+
+- Tenant: Multi-tenant separation
+
+- DocumentVersion: Versioning and audit trails
+
+- AIJob: Tracks async processing of tender extraction
+
+- ComplianceResult: Scoring and missing items
