@@ -107,6 +107,9 @@ tcdg-backend/
 
 5️⃣ Entity Relationship Diagram (ERD)
 
+## 📊 Database ERD
+
+```mermaid
 erDiagram
 
     TENANT ||--o{ USER : has
@@ -134,95 +137,96 @@ erDiagram
     SUBSCRIPTION ||--o{ USAGE_TRACKING : tracks
 
     TENANT {
-        uuid id PK
-        varchar name
-        varchar status
-        timestamp created_at
+        UUID id PK
+        VARCHAR name
+        VARCHAR status
+        TIMESTAMP created_at
     }
 
     USER {
-        uuid id PK
-        uuid tenant_id FK
-        varchar username
-        varchar email
-        varchar password_hash
-        varchar role
-        boolean enabled
-        timestamp created_at
+        UUID id PK
+        UUID tenant_id FK
+        VARCHAR username
+        VARCHAR email
+        VARCHAR password_hash
+        VARCHAR role
+        BOOLEAN enabled
+        TIMESTAMP created_at
     }
 
     COMPANY {
-        uuid id PK
-        uuid tenant_id FK
-        varchar name
-        varchar registration_number
-        varchar bee_level
-        timestamp created_at
+        UUID id PK
+        UUID tenant_id FK
+        VARCHAR name
+        VARCHAR registration_number
+        VARCHAR bee_level
+        TIMESTAMP created_at
     }
 
     DOCUMENT {
-        uuid id PK
-        uuid tenant_id FK
-        uuid company_id FK
-        varchar type
-        varchar status
-        timestamp created_at
+        UUID id PK
+        UUID tenant_id FK
+        UUID company_id FK
+        VARCHAR type
+        VARCHAR status
+        TIMESTAMP created_at
     }
 
     DOCUMENT_VERSION {
-        uuid id PK
-        uuid document_id FK
-        int version_number
-        varchar storage_path
-        timestamp created_at
+        UUID id PK
+        UUID document_id FK
+        INT version_number
+        VARCHAR storage_path
+        TIMESTAMP created_at
     }
 
     TENDER {
-        uuid id PK
-        uuid tenant_id FK
-        varchar reference_number
-        text description
-        timestamp closing_date
+        UUID id PK
+        UUID tenant_id FK
+        VARCHAR reference_number
+        TEXT description
+        TIMESTAMP closing_date
     }
 
     COMPLIANCE_RESULT {
-        uuid id PK
-        uuid tenant_id FK
-        uuid tender_id FK
-        uuid company_id FK
-        numeric score
-        jsonb missing_items
-        timestamp created_at
+        UUID id PK
+        UUID tenant_id FK
+        UUID tender_id FK
+        UUID company_id FK
+        NUMERIC score
+        JSONB missing_items
+        TIMESTAMP created_at
     }
 
     AI_JOB {
-        uuid id PK
-        uuid tenant_id FK
-        uuid tender_id FK
-        varchar status
-        varchar result_path
-        timestamp created_at
+        UUID id PK
+        UUID tenant_id FK
+        UUID tender_id FK
+        VARCHAR status
+        VARCHAR result_path
+        TIMESTAMP created_at
     }
 
     IDEMPOTENCY_KEY {
-        uuid id PK
-        uuid tenant_id FK
-        varchar key
-        varchar request_hash
-        timestamp created_at
+        UUID id PK
+        UUID tenant_id FK
+        VARCHAR key
+        VARCHAR request_hash
+        TIMESTAMP created_at
     }
 
     AUDIT_LOG {
-        uuid id PK
-        uuid tenant_id FK
-        uuid user_id FK
-        varchar action
-        varchar entity_type
-        uuid entity_id
-        jsonb old_value
-        jsonb new_value
-        timestamp created_at
+        UUID id PK
+        UUID tenant_id FK
+        UUID user_id FK
+        VARCHAR action
+        VARCHAR entity_type
+        UUID entity_id
+        JSONB old_value
+        JSONB new_value
+        TIMESTAMP created_at
     }
+```
 
 
 Notes:
