@@ -109,7 +109,7 @@ tcdg-backend/
 
 ## 📊 TCDG Database ERD
 
-![Database ERD](./docs/tcdg-erd.png)
+![Database ERD](./docs/images/tcdg-erd.png)
 
 Notes:
 
