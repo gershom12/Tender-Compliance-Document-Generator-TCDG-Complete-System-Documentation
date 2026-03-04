@@ -3,14 +3,19 @@ server:
 
 spring:
   datasource:
-    url: jdbc:h2:mem:tcdg-auth-servicedb
+    url: jdbc:h2:mem:tcdg_auth
     driverClassName: org.h2.Driver
     username: sa
-    password: password
-  h2:
-    console:
-      enabled: true
+    password:
+    hikari:
+      maximum-pool-size: 5
   jpa:
     hibernate:
       ddl-auto: update
     show-sql: true
+
+  kafka:
+    bootstrap-servers: localhost:9092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer

@@ -1,1 +1,8 @@
+com\tcdg\tcdgauthservice\controller\AuthController.class
+com\tcdg\tcdgauthservice\model\User.class
+com\tcdg\tcdgauthservice\model\User$UserBuilder.class
+com\tcdg\tcdgauthservice\security\JwtUtil.class
 com\tcdg\tcdgauthservice\TcdgAuthServiceApplication.class
+com\tcdg\tcdgauthservice\kafka\KafkaProducerService.class
+com\tcdg\tcdgauthservice\repository\UserRepository.class
+com\tcdg\tcdgauthservice\service\AuthService.class

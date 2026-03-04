@@ -1,1 +1,16 @@
 C:\IdeaProjects\tcdg - tender compliance document generator\tcdg-microservices\tcdg-document-service\src\main\java\com\tcdg\tcdgdocumentservice\TcdgDocumentServiceApplication.java
+C:\IdeaProjects\tcdg - tender compliance document generator\tcdg-microservices\tcdg-document-service\src\main\java\com\tcdg\tcdgdocumentservice\kafka\DocumentGenerationListener.java
+C:\IdeaProjects\tcdg - tender compliance document generator\tcdg-microservices\tcdg-document-service\src\main\java\com\tcdg\tcdgdocumentservice\service\PlaceholderMergeService.java
+C:\IdeaProjects\tcdg - tender compliance document generator\tcdg-microservices\tcdg-document-service\src\main\java\com\tcdg\tcdgdocumentservice\dto\DocumentRequestEvent.java
+C:\IdeaProjects\tcdg - tender compliance document generator\tcdg-microservices\tcdg-document-service\src\main\java\com\tcdg\tcdgdocumentservice\config\MinioConfig.java
+C:\IdeaProjects\tcdg - tender compliance document generator\tcdg-microservices\tcdg-document-service\src\main\java\com\tcdg\tcdgdocumentservice\client\TemplateClient.java
+C:\IdeaProjects\tcdg - tender compliance document generator\tcdg-microservices\tcdg-document-service\src\main\java\com\tcdg\tcdgdocumentservice\client\CompanyClient.java
+C:\IdeaProjects\tcdg - tender compliance document generator\tcdg-microservices\tcdg-document-service\src\main\java\com\tcdg\tcdgdocumentservice\dto\DocumentGeneratedEvent.java
+C:\IdeaProjects\tcdg - tender compliance document generator\tcdg-microservices\tcdg-document-service\src\main\java\com\tcdg\tcdgdocumentservice\model\Document.java
+C:\IdeaProjects\tcdg - tender compliance document generator\tcdg-microservices\tcdg-document-service\src\main\java\com\tcdg\tcdgdocumentservice\dto\DocumentResponse.java
+C:\IdeaProjects\tcdg - tender compliance document generator\tcdg-microservices\tcdg-document-service\src\main\java\com\tcdg\tcdgdocumentservice\service\StorageService.java
+C:\IdeaProjects\tcdg - tender compliance document generator\tcdg-microservices\tcdg-document-service\src\main\java\com\tcdg\tcdgdocumentservice\controller\DocumentController.java
+C:\IdeaProjects\tcdg - tender compliance document generator\tcdg-microservices\tcdg-document-service\src\main\java\com\tcdg\tcdgdocumentservice\repository\DocumentRepository.java
+C:\IdeaProjects\tcdg - tender compliance document generator\tcdg-microservices\tcdg-document-service\src\main\java\com\tcdg\tcdgdocumentservice\kafka\DocumentEventProducer.java
+C:\IdeaProjects\tcdg - tender compliance document generator\tcdg-microservices\tcdg-document-service\src\main\java\com\tcdg\tcdgdocumentservice\config\MinioProperties.java
+C:\IdeaProjects\tcdg - tender compliance document generator\tcdg-microservices\tcdg-document-service\src\main\java\com\tcdg\tcdgdocumentservice\service\DocumentService.java

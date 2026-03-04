@@ -3,14 +3,21 @@ server:
 
 spring:
   datasource:
-    url: jdbc:h2:mem:tcdg-user-servicedb
+    url: jdbc:h2:mem:tcdg_user
     driverClassName: org.h2.Driver
     username: sa
-    password: password
-  h2:
-    console:
-      enabled: true
+    password:
   jpa:
     hibernate:
       ddl-auto: update
     show-sql: true
+
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: tcdg-user-group
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
