@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="tcdg-document-service" />
+        <module name="tcdg-company-service" />
+        <module name="tcdg-notification-service" />
+        <module name="tcdg-tender-service" />
+        <module name="tcdg-api-gateway" />
+        <module name="tcdg-auth-service" />
+        <module name="tcdg-audit-service" />
+        <module name="tcdg-template-service" />
+        <module name="tcdg-user-service" />
+      </profile>
+    </annotationProcessing>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="tcdg-api-gateway" options="-parameters" />
+      <module name="tcdg-audit-service" options="-parameters" />
+      <module name="tcdg-auth-service" options="-parameters" />
+      <module name="tcdg-company-service" options="-parameters" />
+      <module name="tcdg-document-service" options="-parameters" />
+      <module name="tcdg-notification-service" options="-parameters" />
+      <module name="tcdg-template-service" options="-parameters" />
+      <module name="tcdg-tender-service" options="-parameters" />
+      <module name="tcdg-user-service" options="-parameters" />
+    </option>
+  </component>
+</project>

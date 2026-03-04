@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/tcdg-api-gateway/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/tcdg-audit-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/tcdg-auth-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/tcdg-company-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/tcdg-document-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/tcdg-notification-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/tcdg-template-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/tcdg-tender-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/tcdg-user-service/src/main/java" charset="UTF-8" />
+  </component>
+</project>
